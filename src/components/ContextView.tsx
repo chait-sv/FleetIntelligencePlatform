@@ -20,6 +20,7 @@ const ContextView = () => {
           <div className="text-center z-10">
             <Camera className="h-10 w-10 text-muted-foreground/30 mx-auto mb-2" />
             <p className="text-xs text-muted-foreground">FEED — NRU-0042 — CAM_FRONT</p>
+            <p className="text-[10px] text-warning mt-1.5 font-semibold">Camera Feed: Passenger spotted 50ft ahead in restricted red zone</p>
             <p className="text-[10px] text-muted-foreground/60 mt-1 font-mono">1920×1080 @ 30fps | 48ms latency</p>
           </div>
         </div>
