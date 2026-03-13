@@ -216,7 +216,7 @@ const TelemetryPanel = () => {
         <div className="panel-header">Guided Autonomy Controls</div>
         <div className="p-2.5 space-y-2">
           <div className="text-[11px] text-accent font-semibold mb-2">
-            Action: Send new Waypoint to Vehicle
+            Action: Review and send new Waypoint to Vehicle.
           </div>
           <Button variant="command" size="lg" className="w-full gap-2">
             <ArrowRight className="h-4 w-4" />
