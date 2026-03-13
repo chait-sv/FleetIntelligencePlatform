@@ -72,6 +72,28 @@ const TelemetryPanel = () => {
         </div>
       </div>
 
+      {/* Sensor Health */}
+      <div className="panel-border">
+        <div className="panel-header">Sensor Health</div>
+        <div className="p-2.5 space-y-2.5">
+          {sensorHealth.map((group) => (
+            <div key={group.category}>
+              <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">
+                {group.category}
+              </div>
+              <div className="space-y-1">
+                {group.sensors.map((sensor) => (
+                  <div key={sensor.name} className="flex items-center justify-between text-[11px]">
+                    <span className="text-muted-foreground">{sensor.name}</span>
+                    <StatusDot status={sensor.status} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Rider Comms */}
       <div className="panel-border flex-1 flex flex-col min-h-0">
         <div className="panel-header">Rider Comms</div>
