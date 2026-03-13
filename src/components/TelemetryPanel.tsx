@@ -147,7 +147,7 @@ const TelemetryPanel = () => {
                 <span className="text-[9px] font-mono text-muted-foreground">CAM_FRONT · 10s buffer</span>
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-secondary">
-                <div className="h-full bg-primary/60 rounded-r-sm" style={{ width: isPlaying ? "100%" : "0%", transition: isPlaying ? "width 15s linear" : "none" }} />
+                <div className="h-full bg-primary/60 rounded-r-sm" style={{ width: isPlaying ? "100%" : "0%", transition: isPlaying ? "width 10s linear" : "none" }} />
               </div>
             </div>
             <div className="flex items-center gap-1.5">
