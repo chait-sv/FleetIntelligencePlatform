@@ -1,4 +1,5 @@
 import { Camera, Map, Maximize2, MapPin } from "lucide-react";
+import hdMapImg from "@/assets/hd-map.png";
 import camLeft from "@/assets/cam-left.jpg";
 import camFront from "@/assets/cam-front.jpg";
 import camRight from "@/assets/cam-right.jpg";
