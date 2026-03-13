@@ -57,7 +57,7 @@ const telemetryData = [
 
 const chatMessages = [
   { sender: "rider", text: "Why has the car stopped?", time: "14:32" },
-  { sender: "operator", text: "We detected an obstruction. Rerouting now.", time: "14:33" },
+  { sender: "operator", text: "Nuro Support is helping your vehicle find a safe place to pull over. We see you on the curb.", time: "14:33" },
   { sender: "rider", text: "OK, how long will it take?", time: "14:33" },
 ];
 
