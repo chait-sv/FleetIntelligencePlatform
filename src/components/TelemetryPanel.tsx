@@ -2,6 +2,38 @@ import { Battery, HardDrive, Gauge, AlertCircle, Send, ArrowRight } from "lucide
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
+type HealthStatus = "green" | "amber" | "red";
+
+const statusColors: Record<HealthStatus, string> = {
+  green: "bg-green-500",
+  amber: "bg-yellow-500",
+  red: "bg-red-500",
+};
+
+const sensorHealth: { category: string; sensors: { name: string; status: HealthStatus }[] }[] = [
+  {
+    category: "Cameras",
+    sensors: [
+      { name: "Front", status: "green" },
+      { name: "Left", status: "green" },
+      { name: "Right", status: "amber" },
+      { name: "Rear", status: "red" },
+    ],
+  },
+  {
+    category: "Lidar",
+    sensors: [{ name: "Lidar", status: "green" }],
+  },
+  {
+    category: "Radar",
+    sensors: [{ name: "Radar", status: "amber" }],
+  },
+];
+
+const StatusDot = ({ status }: { status: HealthStatus }) => (
+  <span className={`inline-block h-2 w-2 rounded-full ${statusColors[status]}`} />
+);
+
 const telemetryData = [
   { label: "Vehicle ID", value: "NRU-0042", icon: null },
   { label: "Battery", value: "78%", icon: Battery, color: "text-accent" },
