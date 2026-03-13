@@ -1,4 +1,7 @@
 import { Camera, Map, Maximize2, MapPin } from "lucide-react";
+import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import camLeft from "@/assets/cam-left.jpg";
 import camFront from "@/assets/cam-front.jpg";
 import camRight from "@/assets/cam-right.jpg";
