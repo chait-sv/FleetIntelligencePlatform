@@ -63,47 +63,88 @@ const chatMessages = [
 const TelemetryPanel = () => {
   const [chatInput, setChatInput] = useState("");
 
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <div className="flex flex-col h-full gap-2">
       {/* Telemetry */}
-      <div className="panel-border">
-        <div className="panel-header">Telemetry</div>
-        <div className="p-2.5 space-y-2">
-          {telemetryData.map((d) => (
-            <div key={d.label} className="flex items-center justify-between text-[11px]">
-              <span className="text-muted-foreground">{d.label}</span>
-              <div className="flex items-center gap-1.5">
-                {d.icon && <d.icon className={`h-3 w-3 ${d.color}`} />}
-                <span className={`font-mono font-medium ${d.color || "text-foreground"}`}>
-                  {d.value}
-                </span>
+      <Collapsible defaultOpen className="panel-border">
+        <CollapsibleTrigger className="panel-header w-full flex items-center justify-between cursor-pointer group">
+          <span>Telemetry</span>
+          <ChevronDown className="h-3 w-3 text-muted-foreground transition-transform group-data-[state=closed]:-rotate-90" />
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <div className="p-2.5 space-y-2">
+            {telemetryData.map((d) => (
+              <div key={d.label} className="flex items-center justify-between text-[11px]">
+                <span className="text-muted-foreground">{d.label}</span>
+                <div className="flex items-center gap-1.5">
+                  {d.icon && <d.icon className={`h-3 w-3 ${d.color}`} />}
+                  <span className={`font-mono font-medium ${d.color || "text-foreground"}`}>
+                    {d.value}
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
+            ))}
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
 
       {/* Sensor Health */}
-      <div className="panel-border">
-        <div className="panel-header">Sensor Health</div>
-        <div className="p-2.5 space-y-2.5">
-          {sensorHealth.map((group) => (
-            <div key={group.category}>
-              <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">
-                {group.category}
+      <Collapsible defaultOpen className="panel-border">
+        <CollapsibleTrigger className="panel-header w-full flex items-center justify-between cursor-pointer group">
+          <span>Sensor Health</span>
+          <ChevronDown className="h-3 w-3 text-muted-foreground transition-transform group-data-[state=closed]:-rotate-90" />
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <div className="p-2.5 space-y-2.5">
+            {sensorHealth.map((group) => (
+              <div key={group.category}>
+                <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">
+                  {group.category}
+                </div>
+                <div className="space-y-1">
+                  {group.sensors.map((sensor) => (
+                    <div key={sensor.name} className="flex items-center justify-between text-[11px]">
+                      <span className="text-muted-foreground">{sensor.name}</span>
+                      <StatusDot status={sensor.status} />
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="space-y-1">
-                {group.sensors.map((sensor) => (
-                  <div key={sensor.name} className="flex items-center justify-between text-[11px]">
-                    <span className="text-muted-foreground">{sensor.name}</span>
-                    <StatusDot status={sensor.status} />
-                  </div>
-                ))}
+            ))}
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
+
+      {/* Camera History */}
+      <Collapsible defaultOpen className="panel-border">
+        <CollapsibleTrigger className="panel-header w-full flex items-center justify-between cursor-pointer group">
+          <span>Camera History</span>
+          <ChevronDown className="h-3 w-3 text-muted-foreground transition-transform group-data-[state=closed]:-rotate-90" />
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <div className="p-2.5 space-y-2">
+            <div className="relative w-full aspect-video bg-secondary/50 rounded-sm border border-border overflow-hidden flex items-center justify-center">
+              <div className="text-[10px] text-muted-foreground font-mono">Front Camera — 15s clip</div>
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-secondary">
+                <div className="h-full bg-primary/60 rounded-r-sm" style={{ width: isPlaying ? "100%" : "0%", transition: isPlaying ? "width 15s linear" : "none" }} />
               </div>
             </div>
-          ))}
-        </div>
-      </div>
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => setIsPlaying(!isPlaying)}
+                className="p-1.5 rounded-sm bg-primary/20 text-primary hover:bg-primary/30 transition-colors"
+              >
+                {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+              </button>
+              <span className="text-[10px] text-muted-foreground font-mono">
+                {isPlaying ? "Playing..." : "Paused"} · 00:15
+              </span>
+            </div>
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
 
       {/* Rider Comms */}
       <div className="panel-border flex-1 flex flex-col min-h-0">
