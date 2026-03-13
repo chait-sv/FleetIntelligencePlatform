@@ -113,32 +113,39 @@ const ContextView = () => {
           </div>
           <span className="text-[10px] font-mono text-muted-foreground">LAT 37.7749 | LNG -122.4194</span>
         </div>
-        <div className="flex-1 flex items-center justify-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-transparent to-primary/5" />
-          {/* Grid overlay */}
-          <div className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: `
-                linear-gradient(hsl(185 100% 45% / 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, hsl(185 100% 45% / 0.3) 1px, transparent 1px)
-              `,
-              backgroundSize: '40px 40px',
-            }}
-          />
-          <div className="text-center z-10">
-            <Map className="h-10 w-10 text-muted-foreground/30 mx-auto mb-2" />
-            <p className="text-xs text-muted-foreground">HD MAP — ZONE SF-DOWNTOWN-42</p>
-            <div className="flex items-center justify-center gap-6 mt-2">
-              <div className="flex items-center gap-1">
-                <MapPin className="h-3.5 w-3.5 text-destructive" />
-                <span className="text-[10px] text-destructive font-mono font-semibold">Current Location</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <MapPin className="h-3.5 w-3.5 text-green-500" />
-                <span className="text-[10px] text-green-500 font-mono font-semibold">New Waypoint</span>
-              </div>
+        <div className="flex-1 relative overflow-hidden">
+          <MapContainer
+            center={[37.7867, -122.4078]}
+            zoom={17}
+            style={{ height: "100%", width: "100%" }}
+            zoomControl={false}
+            attributionControl={false}
+          >
+            <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+            <Marker position={CURRENT_LOCATION} icon={currentIcon}>
+              <Popup>
+                <span className="text-xs font-mono">170 O'Farrell St</span>
+              </Popup>
+            </Marker>
+            <Marker position={WAYPOINT_LOCATION} icon={waypointIcon}>
+              <Popup>
+                <span className="text-xs font-mono">285 Geary St</span>
+              </Popup>
+            </Marker>
+          </MapContainer>
+          {/* Legend overlay */}
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-[1000] bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-sm flex items-center gap-6">
+            <div className="flex items-center gap-1">
+              <MapPin className="h-3.5 w-3.5 text-destructive" />
+              <span className="text-[10px] text-destructive font-mono font-semibold">Current Location</span>
             </div>
-            <p className="text-[10px] text-muted-foreground/60 mt-1 font-mono">Layer: Semantic | Objects: 142 | Updated 1.2s ago</p>
+            <div className="flex items-center gap-1">
+              <MapPin className="h-3.5 w-3.5 text-green-500" />
+              <span className="text-[10px] text-green-500 font-mono font-semibold">New Waypoint</span>
+            </div>
+          </div>
+          <div className="absolute top-2 right-2 z-[1000] bg-background/70 backdrop-blur-sm px-2 py-1 rounded-sm">
+            <p className="text-[10px] text-muted-foreground/60 font-mono">Layer: Semantic | Objects: 142 | Updated 1.2s ago</p>
           </div>
         </div>
       </div>
