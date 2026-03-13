@@ -2,6 +2,26 @@ import { Camera, Map, Maximize2, MapPin } from "lucide-react";
 import camLeft from "@/assets/cam-left.jpg";
 import camFront from "@/assets/cam-front.jpg";
 import camRight from "@/assets/cam-right.jpg";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+const currentIcon = new L.DivIcon({
+  className: "",
+  html: `<div style="display:flex;align-items:center;justify-content:center;width:24px;height:24px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="hsl(0 84% 60%)" stroke="white" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3" fill="white"/></svg></div>`,
+  iconSize: [24, 24],
+  iconAnchor: [12, 24],
+});
+
+const waypointIcon = new L.DivIcon({
+  className: "",
+  html: `<div style="display:flex;align-items:center;justify-content:center;width:24px;height:24px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="hsl(142 71% 45%)" stroke="white" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3" fill="white"/></svg></div>`,
+  iconSize: [24, 24],
+  iconAnchor: [12, 24],
+});
+
+const CURRENT_LOCATION: [number, number] = [37.7862, -122.4074]; // 170 O'Farrell St
+const WAYPOINT_LOCATION: [number, number] = [37.7871, -122.4082]; // 285 Geary St
 
 const ContextView = () => {
   return (
