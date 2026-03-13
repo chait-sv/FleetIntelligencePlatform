@@ -144,10 +144,10 @@ const TelemetryPanel = () => {
                 playsInline
               />
               <div className="absolute top-1.5 left-1.5 bg-background/70 backdrop-blur-sm px-1.5 py-0.5 rounded-sm">
-                <span className="text-[9px] font-mono text-muted-foreground">CAM_FRONT · 15s buffer</span>
+                <span className="text-[9px] font-mono text-muted-foreground">CAM_FRONT · 10s buffer</span>
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-secondary">
-                <div className="h-full bg-primary/60 rounded-r-sm" style={{ width: isPlaying ? "100%" : "0%", transition: isPlaying ? "width 15s linear" : "none" }} />
+                <div className="h-full bg-primary/60 rounded-r-sm" style={{ width: isPlaying ? "100%" : "0%", transition: isPlaying ? "width 10s linear" : "none" }} />
               </div>
             </div>
             <div className="flex items-center gap-1.5">
@@ -158,7 +158,7 @@ const TelemetryPanel = () => {
                 {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
               </button>
               <span className="text-[10px] text-muted-foreground font-mono">
-                {isPlaying ? "Playing..." : "Paused"} · 00:15
+                {isPlaying ? "Playing..." : "Paused"} · 00:10
               </span>
             </div>
           </div>
