@@ -1,5 +1,6 @@
-import { Battery, HardDrive, Gauge, AlertCircle, Send, ArrowRight } from "lucide-react";
+import { Battery, HardDrive, Gauge, AlertCircle, Send, ArrowRight, ChevronDown, Play, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { useState } from "react";
 
 type HealthStatus = "green" | "amber" | "red";
