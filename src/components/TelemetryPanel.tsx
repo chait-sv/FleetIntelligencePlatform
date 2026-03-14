@@ -48,6 +48,7 @@ const StatusDot = ({ status }: { status: HealthStatus }) => (
 const telemetryData = [
   { label: "Vehicle ID", value: "NL-0012", icon: null },
   { label: "Battery", value: "87%", icon: Battery, color: "text-accent" },
+  { label: "Disk Storage", value: "42%", icon: HardDrive, color: "text-accent" },
   { label: "Speed", value: "0 mph", icon: Gauge, color: "text-primary" },
   { label: "Fault Code", value: "E-PICKUP-TIMEOUT", icon: AlertCircle, color: "text-warning" },
   { label: "Fault Type", value: "Pickup Mismatch", icon: AlertCircle, color: "text-warning" },
