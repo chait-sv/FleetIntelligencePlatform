@@ -84,6 +84,7 @@ const scenarioChat = {
   ],
   "INT-4822": [
     { sender: "system", text: "Your vehicle has paused for road work. Resuming shortly.", time: "14:45" },
+    { sender: "rider", text: "Will you go around this construction?", time: "14:46" },
   ],
   "INT-4823": [
     { sender: "system", text: "Vehicle performing sensor calibration. No rider action required.", time: "15:01" },
