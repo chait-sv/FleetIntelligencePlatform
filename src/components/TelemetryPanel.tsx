@@ -116,10 +116,22 @@ const TelemetryPanel = () => {
   const [chatInput, setChatInput] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const { activeTicket } = useScenario();
+  const [localMessages, setLocalMessages] = useState<Record<string, { sender: string; text: string; time: string }[]>>({});
 
   const telemetryData = scenarioTelemetry[activeTicket];
-  const chatMessages = scenarioChat[activeTicket];
+  const chatMessages = [...scenarioChat[activeTicket], ...(localMessages[activeTicket] || [])];
   const autonomy = scenarioAutonomy[activeTicket];
+
+  const handleSendMessage = () => {
+    if (!chatInput.trim()) return;
+    const now = new Date();
+    const time = `${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
+    setLocalMessages((prev) => ({
+      ...prev,
+      [activeTicket]: [...(prev[activeTicket] || []), { sender: "operator", text: chatInput.trim(), time }],
+    }));
+    setChatInput("");
+  };
 
   return (
     <div className="flex flex-col gap-2 pb-2">
@@ -255,10 +267,11 @@ const TelemetryPanel = () => {
               type="text"
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
               placeholder="Message rider..."
               className="flex-1 bg-secondary text-xs text-foreground px-2.5 py-1.5 rounded-sm border border-border placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
             />
-            <button className="p-1.5 rounded-sm bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
+            <button onClick={handleSendMessage} className="p-1.5 rounded-sm bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
               <Send className="h-3 w-3" />
             </button>
             <button className="p-1.5 rounded-sm bg-accent/20 text-accent hover:bg-accent/30 transition-colors" title="Push to Talk">
