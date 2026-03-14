@@ -36,7 +36,7 @@ const sensorHealth: { category: string; sensors: { name: string; status: HealthS
       { name: "Front", status: "amber" },
       { name: "Left", status: "green" },
       { name: "Right", status: "green" },
-      { name: "Rear", status: "red" },
+      { name: "Rear", status: "green" },
     ],
   },
 ];
