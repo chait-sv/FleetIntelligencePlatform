@@ -267,10 +267,11 @@ const TelemetryPanel = () => {
               type="text"
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
               placeholder="Message rider..."
               className="flex-1 bg-secondary text-xs text-foreground px-2.5 py-1.5 rounded-sm border border-border placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
             />
-            <button className="p-1.5 rounded-sm bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
+            <button onClick={handleSendMessage} className="p-1.5 rounded-sm bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
               <Send className="h-3 w-3" />
             </button>
             <button className="p-1.5 rounded-sm bg-accent/20 text-accent hover:bg-accent/30 transition-colors" title="Push to Talk">
