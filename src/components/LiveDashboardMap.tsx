@@ -60,25 +60,17 @@ function createVehicleIcon(vehicleId: string, band: "green" | "amber" | "red") {
           line-height:1.2;
           box-shadow:0 1px 4px rgba(0,0,0,0.5);
           border:1px solid rgba(0,0,0,0.2);
+          margin-bottom:2px;
         ">${vehicleId}</div>
-        <div style="
-          width:0;height:0;
-          border-left:5px solid transparent;
-          border-right:5px solid transparent;
-          border-top:6px solid ${color};
-        "></div>
-        <div style="
-          width:8px;height:8px;
-          background:${color};
-          border-radius:50%;
-          border:2px solid #000;
-          box-shadow:0 0 6px ${color};
-          margin-top:-1px;
-        "></div>
+        <img src="${vehicleImg}" style="
+          width:32px;
+          height:auto;
+          filter:drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+        " alt="${vehicleId}" />
       </div>
     `,
-    iconSize: [60, 40],
-    iconAnchor: [30, 40],
+    iconSize: [60, 50],
+    iconAnchor: [30, 50],
   });
 }
 
