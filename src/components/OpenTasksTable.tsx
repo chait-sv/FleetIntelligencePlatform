@@ -198,7 +198,7 @@ const OpenTasksTable = () => {
               {columnDefs.map((col) => (
                 <TableHead
                   key={col.key}
-                  className="cursor-pointer select-none whitespace-nowrap text-[11px] h-8 px-3"
+                  className="cursor-pointer select-none whitespace-nowrap text-xs h-9 px-3"
                   onClick={() => handleSort(col.key)}
                 >
                   <span className="inline-flex items-center">
