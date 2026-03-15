@@ -75,7 +75,7 @@ function generateTasks() {
     [statusPool[i], statusPool[j]] = [statusPool[j], statusPool[i]];
   }
 
-  const priorities = ["P1", "P2", "P3", "P4"];
+  const priorities = ["P1", "P2", "P3"];
   const now = Date.now();
 
   return Array.from({ length: 100 }, (_, i) => {
