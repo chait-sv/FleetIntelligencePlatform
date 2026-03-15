@@ -223,7 +223,7 @@ const OpenTasksTable = () => {
                 <TableCell className="px-3 py-1.5 font-mono">{task.faultCode}</TableCell>
                 <TableCell className="px-3 py-1.5">{task.faultType}</TableCell>
                 <TableCell className="px-3 py-1.5 whitespace-nowrap">
-                  {task.created.toLocaleString("en-US", { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false })}
+                  {task.created.toLocaleString("en-US", { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })}
                 </TableCell>
                 <TableCell className="px-3 py-1.5 font-mono text-right">{task.elapsed.toLocaleString()}</TableCell>
                 <TableCell className="px-3 py-1.5">{task.operator}</TableCell>
