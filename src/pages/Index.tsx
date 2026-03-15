@@ -15,7 +15,15 @@ const Index = () => {
         <div className="flex-1 flex gap-2 p-2 min-h-0">
           <LeftNav activeNav={activeNav} setActiveNav={setActiveNav} />
           <div className="flex-1 min-w-0">
-            <ContextView />
+            {activeNav === "My Tasks" ? (
+              <ContextView />
+            ) : (
+              <div className="h-full panel-border">
+                <div className="panel-header">
+                  {activeNav === "Home" ? "Live Dashboard" : activeNav}
+                </div>
+              </div>
+            )}
           </div>
           {activeNav === "My Tasks" && (
             <div className="w-[25%] min-w-0 overflow-y-auto">
