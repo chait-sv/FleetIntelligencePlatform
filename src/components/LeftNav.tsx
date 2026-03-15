@@ -65,10 +65,7 @@ const LeftNav = ({ activeNav, setActiveNav }: LeftNavProps) => {
               </Tooltip>
             );
           })}
-        </div>
-
-        {/* Logout button at bottom */}
-        <div className="flex flex-col items-center py-2 border-t border-border">
+          {/* Logout */}
           <Tooltip delayDuration={0}>
             <TooltipTrigger asChild>
               <button
