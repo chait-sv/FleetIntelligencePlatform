@@ -82,7 +82,7 @@ function generateTasks() {
     const faultType = typePool[i];
     const createdOffset = Math.floor(rand() * 86400) * 1000; // within last 24h
     const created = new Date(now - createdOffset);
-    const elapsed = Math.floor(createdOffset / 1000);
+    const elapsed = Math.floor(rand() * 301); // 0–300 seconds
     return {
       id: `INT-${5000 + i}`,
       description: pick(descriptions[faultType]),
@@ -223,9 +223,9 @@ const OpenTasksTable = () => {
                 <TableCell className="px-3 py-1.5 font-mono">{task.faultCode}</TableCell>
                 <TableCell className="px-3 py-1.5">{task.faultType}</TableCell>
                 <TableCell className="px-3 py-1.5 whitespace-nowrap">
-                  {task.created.toLocaleString("en-US", { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false })}
+                  {task.created.toLocaleString("en-US", { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })}
                 </TableCell>
-                <TableCell className="px-3 py-1.5 font-mono text-right">{task.elapsed.toLocaleString()}</TableCell>
+                <TableCell className={`px-3 py-1.5 font-mono text-right font-semibold ${task.elapsed > 60 ? "text-destructive" : task.elapsed >= 40 ? "text-warning" : "text-green-500"}`}>{task.elapsed}</TableCell>
                 <TableCell className="px-3 py-1.5">{task.operator}</TableCell>
                 <TableCell className="px-3 py-1.5">
                   <Badge variant="outline" className={`text-[11px] px-1.5 py-0 ${statusColors[task.status]}`}>
