@@ -22,11 +22,13 @@ const Index = () => {
             ) : activeNav === "Open Tasks" ? (
               <OpenTasksTable />
             ) : (
-              <div className="h-full panel-border">
-                <div className="panel-header">
-                  {activeNav === "Home" ? "Live Dashboard" : activeNav}
+              activeNav === "Home" ? (
+                <LiveDashboardMap />
+              ) : (
+                <div className="h-full panel-border">
+                  <div className="panel-header">{activeNav}</div>
                 </div>
-              </div>
+              )
             )}
           </div>
           {activeNav === "My Tasks" && (
