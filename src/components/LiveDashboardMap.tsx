@@ -96,7 +96,7 @@ function selectVehicles(tasks: Task[]): { task: Task; band: "green" | "amber" | 
   const rArr = pickN(red, rCount).map((t) => ({ task: t, band: "red" as const }));
 
   // Interleave bands so colors are evenly distributed across map positions
-  const result: typeof gArr = [];
+  const result: { task: Task; band: "green" | "amber" | "red" }[] = [];
   const maxLen = Math.max(gArr.length, aArr.length, rArr.length);
   for (let i = 0; i < maxLen; i++) {
     if (i < gArr.length) result.push(gArr[i]);
