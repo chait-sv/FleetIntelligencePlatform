@@ -228,7 +228,7 @@ const OpenTasksTable = () => {
                 <TableCell className="px-3 py-1.5 font-mono text-right">{task.elapsed.toLocaleString()}</TableCell>
                 <TableCell className="px-3 py-1.5">{task.operator}</TableCell>
                 <TableCell className="px-3 py-1.5">
-                  <Badge variant="outline" className={`text-[10px] px-1.5 py-0 ${statusColors[task.status]}`}>
+                  <Badge variant="outline" className={`text-[11px] px-1.5 py-0 ${statusColors[task.status]}`}>
                     {task.status}
                   </Badge>
                 </TableCell>
