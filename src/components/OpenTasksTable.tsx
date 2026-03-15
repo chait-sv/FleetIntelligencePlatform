@@ -198,7 +198,7 @@ const OpenTasksTable = () => {
               {columnDefs.map((col) => (
                 <TableHead
                   key={col.key}
-                  className="cursor-pointer select-none whitespace-nowrap text-[11px] h-8 px-3"
+                  className="cursor-pointer select-none whitespace-nowrap text-xs h-9 px-3"
                   onClick={() => handleSort(col.key)}
                 >
                   <span className="inline-flex items-center">
@@ -211,11 +211,11 @@ const OpenTasksTable = () => {
           </TableHeader>
           <TableBody>
             {sorted.map((task) => (
-              <TableRow key={task.id} className="text-[11px]">
+              <TableRow key={task.id} className="text-xs">
                 <TableCell className="px-3 py-1.5 font-semibold text-foreground">{task.id}</TableCell>
                 <TableCell className="px-3 py-1.5 max-w-[200px] truncate">{task.description}</TableCell>
                 <TableCell className="px-3 py-1.5">
-                  <Badge variant="outline" className={`text-[10px] px-1.5 py-0 ${priorityColors[task.priority]}`}>
+                  <Badge variant="outline" className={`text-[11px] px-1.5 py-0 ${priorityColors[task.priority]}`}>
                     {task.priority}
                   </Badge>
                 </TableCell>
@@ -228,7 +228,7 @@ const OpenTasksTable = () => {
                 <TableCell className="px-3 py-1.5 font-mono text-right">{task.elapsed.toLocaleString()}</TableCell>
                 <TableCell className="px-3 py-1.5">{task.operator}</TableCell>
                 <TableCell className="px-3 py-1.5">
-                  <Badge variant="outline" className={`text-[10px] px-1.5 py-0 ${statusColors[task.status]}`}>
+                  <Badge variant="outline" className={`text-[11px] px-1.5 py-0 ${statusColors[task.status]}`}>
                     {task.status}
                   </Badge>
                 </TableCell>
