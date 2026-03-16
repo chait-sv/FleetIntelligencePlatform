@@ -287,39 +287,7 @@ const TelemetryPanel = ({ onResolve }: TelemetryPanelProps) => {
       </Collapsible>
 
       {/* Guided Autonomy Controls */}
-      <div className="panel-border">
-        <div className="panel-header">Guided Autonomy Controls</div>
-        <div className="p-2.5 space-y-2">
-          {autonomy.warning && (
-            <div className="flex items-start gap-1.5 mb-2">
-              <AlertTriangle className="h-3.5 w-3.5 text-warning shrink-0 mt-0.5" />
-              <span className="text-[11px] text-warning font-semibold">{autonomy.warning}</span>
-            </div>
-          )}
-          {autonomy.action && (
-            <div className={`text-[11px] ${autonomy.actionColor} font-semibold mb-2`}>
-              {autonomy.action}
-            </div>
-          )}
-          {autonomy.specialButton && (
-            <Button variant="destructive" size="sm" className="w-full text-[10px] bg-orange-600 hover:bg-orange-700 border-orange-500">
-              {autonomy.specialButton}
-            </Button>
-          )}
-          <Button variant="command" size="lg" className="w-full gap-2">
-            <ArrowRight className="h-4 w-4" />
-            Execute
-          </Button>
-          <div className="flex gap-1.5">
-            <Button variant="outline" size="sm" className="flex-1 text-[10px]">
-              Hold Position
-            </Button>
-            <Button variant="destructive" size="sm" className="flex-1 text-[10px]">
-              E-Stop
-            </Button>
-          </div>
-        </div>
-      </div>
+      <GuidedWorkflow autonomy={autonomy} onResolve={onResolve} />
     </div>
   );
 };
