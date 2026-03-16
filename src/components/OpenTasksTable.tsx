@@ -24,7 +24,7 @@ const columnDefs: { key: keyof Task; label: string }[] = [
 ];
 
 const priorityOrder: Record<string, number> = { P1: 0, P2: 1, P3: 2, P4: 3 };
-const statusOrder: Record<string, number> = { Rescue: 0, "In progress": 1, "Not Started": 2 };
+const statusOrder: Record<string, number> = { Rescue: 0, "In progress": 1, "Not Started": 2, Closed: 3 };
 
 const statusColors: Record<string, string> = {
   "In progress": "bg-primary/20 text-primary border-primary/30",
