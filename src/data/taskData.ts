@@ -13,6 +13,27 @@ export const faultCodes: Record<string, string[]> = {
   "Vehicle Platform": ["VP-201", "VP-202", "VP-203"],
   Hardware: ["HW-301", "HW-302", "HW-303", "HW-304"],
 };
+export const faultCodeDescriptions: Record<string, string> = {
+  "CX-001": "Customer pickup location error",
+  "CX-002": "Passenger timeout exceeded",
+  "CX-003": "Unexpected route deviation",
+  "CX-004": "Rider app synchronization issue",
+  "CX-005": "Estimated arrival miscalculation",
+  "CX-006": "Door mechanism failure at stop",
+  "CX-007": "Payment gateway delay",
+  "CX-008": "Cancellation state conflict",
+  "AV-101": "Perception accuracy degraded",
+  "AV-102": "Planning module timeout",
+  "AV-103": "Localization position drift",
+  "AV-104": "Prediction pipeline error",
+  "VP-201": "Brake subsystem alert",
+  "VP-202": "Steering control fault",
+  "VP-203": "Thermal limit exceeded",
+  "HW-301": "LiDAR obstruction detected",
+  "HW-302": "Camera stream interrupted",
+  "HW-303": "GNSS signal degraded",
+  "HW-304": "Radar alignment drift",
+};
 export const descriptions: Record<string, string[]> = {
   "Fleet CX": [
     "Pickup location mismatch", "Passenger no-show timeout", "Route deviation detected",
@@ -45,6 +66,7 @@ export interface Task {
   priority: string;
   vehicleId: string;
   faultCode: string;
+  faultDescription: string;
   faultType: string;
   created: Date;
   elapsed: number;
@@ -90,12 +112,14 @@ export function generateTasks(): Task[] {
       : elapsedRoll < 0.8
         ? 40 + Math.floor(rand() * 20)
         : 61 + Math.floor(rand() * 240);
+    const fc = pick(faultCodes[faultType]);
     return {
       id: `INT-${5000 + i}`,
       description: pick(descriptions[faultType]),
       priority: pick(priorities),
       vehicleId: `NL-${String(Math.floor(rand() * 200)).padStart(4, "0")}`,
-      faultCode: pick(faultCodes[faultType]),
+      faultCode: fc,
+      faultDescription: faultCodeDescriptions[fc] ?? "",
       faultType,
       created,
       elapsed,
@@ -133,12 +157,14 @@ export function generateClosedTasks(): Task[] {
       : elapsedRoll < 0.8
         ? 40 + Math.floor(rand() * 20)
         : 61 + Math.floor(rand() * 240);
+    const fc = pick(faultCodes[faultType]);
     return {
       id: `INT-${6000 + i}`,
       description: pick(descriptions[faultType]),
       priority: pick(priorities),
       vehicleId: `NL-${String(Math.floor(rand() * 200)).padStart(4, "0")}`,
-      faultCode: pick(faultCodes[faultType]),
+      faultCode: fc,
+      faultDescription: faultCodeDescriptions[fc] ?? "",
       faultType,
       created,
       elapsed,
