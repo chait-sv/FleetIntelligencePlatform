@@ -113,7 +113,11 @@ const scenarioAutonomy = {
   },
 };
 
-const TelemetryPanel = () => {
+interface TelemetryPanelProps {
+  onResolve: () => void;
+}
+
+const TelemetryPanel = ({ onResolve }: TelemetryPanelProps) => {
   const [chatInput, setChatInput] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const { activeTicket } = useScenario();
