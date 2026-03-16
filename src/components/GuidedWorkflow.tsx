@@ -128,12 +128,28 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
                   {autonomy.action}
                 </div>
               )}
+              {radioOptions && (
+                <RadioGroup value={radioSelection} onValueChange={setRadioSelection} className="space-y-1.5">
+                  {radioOptions.map((opt) => (
+                    <div key={opt.value} className="flex items-center gap-2">
+                      <RadioGroupItem value={opt.value} id={opt.value} />
+                      <Label htmlFor={opt.value} className="text-[11px] text-foreground cursor-pointer">{opt.label}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              )}
               {autonomy.specialButton && (
                 <Button variant="destructive" size="sm" className="w-full text-[10px]">
                   {autonomy.specialButton}
                 </Button>
               )}
-              <Button variant="command" size="lg" className="w-full gap-2" onClick={handleStepAction}>
+              <Button
+                variant="command"
+                size="lg"
+                className="w-full gap-2"
+                onClick={handleStepAction}
+                disabled={!!radioOptions && !radioSelection}
+              >
                 <ArrowRight className="h-4 w-4" />
                 Execute
               </Button>
