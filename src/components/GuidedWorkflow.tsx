@@ -43,7 +43,9 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
   const [faultCategory, setFaultCategory] = useState("");
   const [flagSimReview, setFlagSimReview] = useState(false);
   const [radioSelection, setRadioSelection] = useState("");
-  const { activeTicket } = useScenario();
+  const { activeTicket, setActiveTicket } = useScenario();
+
+  const ticketOrder: ScenarioId[] = ["INT-4821", "INT-4822", "INT-4823"];
 
   const radioOptions = scenarioRadioOptions[activeTicket];
 
