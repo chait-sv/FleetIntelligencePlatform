@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 
 const TopNav = () => {
-  const [tenant, setTenant] = useState("uber-fleet");
+  const [tenant, setTenant] = useState("nuro-lucid");
   const [city, setCity] = useState("san-francisco");
 
   return (
@@ -55,11 +55,15 @@ const TopNav = () => {
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="z-[2000] bg-popover border-border">
-              <SelectItem value="uber-fleet">Uber Fleet (Nuro/Lucid)</SelectItem>
+              <SelectItem value="nuro-lucid">Nuro/Lucid</SelectItem>
               <SelectItem value="dev-fleet">Dev Fleet</SelectItem>
               <SelectItem value="wayve">Wayve</SelectItem>
               <SelectItem value="zoox">Zoox</SelectItem>
               <SelectItem value="waymo">Waymo</SelectItem>
+              <SelectItem value="ford">Ford</SelectItem>
+              <SelectItem value="jlr">JLR</SelectItem>
+              <SelectItem value="honda">Honda</SelectItem>
+              <SelectItem value="tata">Tata</SelectItem>
             </SelectContent>
           </Select>
         </div>
