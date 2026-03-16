@@ -1,7 +1,7 @@
 // Shared task generation logic used by OpenTasksTable and LiveDashboardMap
 
 export const faultTypes = ["Fleet CX", "AV Platform", "Vehicle Platform", "Hardware"];
-export const statuses = ["Not Started", "In progress", "Rescue"];
+export const statuses = ["Not Started", "In progress", "Rescue", "Closed"];
 export const operators = [
   "J. Martinez", "A. Chen", "R. Patel", "K. Okonkwo", "L. Johansson",
   "M. Tanaka", "S. Williams", "D. Kim", "P. Novak", "T. Adeyemi",
