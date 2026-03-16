@@ -143,6 +143,17 @@ const ContextView = () => {
               <span className="text-[11px] font-mono font-bold text-destructive bg-background/80 backdrop-blur-sm px-2 py-0.5 rounded-sm">PATH BLOCKED</span>
             </div>
           )}
+          {map.showMarathonRoutes && (
+            <div className="absolute top-3 left-3 flex flex-col gap-1.5">
+              <div className="flex items-center gap-1.5 bg-background/80 backdrop-blur-sm px-2 py-1 rounded-sm">
+                <div className="w-5 h-0.5 border-t-2 border-dashed border-blue-400" />
+                <span className="text-[10px] font-mono font-semibold text-blue-400">Route A: U-Turn + Detour</span>
+              </div>
+              <div className="flex items-center gap-1.5 bg-background/80 backdrop-blur-sm px-2 py-1 rounded-sm">
+                <div className="w-5 h-0.5 border-t-2 border-dashed border-green-400" />
+                <span className="text-[10px] font-mono font-semibold text-green-400">Route B: Left Turn + Alt Street</span>
+              </div>
+            </div>
           <div className="absolute bottom-2 left-2 flex items-center gap-4 bg-background/80 backdrop-blur-sm px-2.5 py-1 rounded-sm">
             <div className="flex items-center gap-1">
               <MapPin className="h-3.5 w-3.5 text-destructive" />

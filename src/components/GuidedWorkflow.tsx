@@ -141,10 +141,10 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
               )}
               {radioOptions && (
                 <RadioGroup value={radioSelection} onValueChange={setRadioSelection} className="space-y-1.5">
-                  {radioOptions.map((opt) => (
+                 {radioOptions.map((opt) => (
                     <div key={opt.value} className="flex items-center gap-2">
                       <RadioGroupItem value={opt.value} id={opt.value} />
-                      <Label htmlFor={opt.value} className="text-[11px] text-foreground cursor-pointer">{opt.label}</Label>
+                      <Label htmlFor={opt.value} className={`text-[11px] cursor-pointer ${opt.color || "text-foreground"}`}>{opt.label}</Label>
                     </div>
                   ))}
                 </RadioGroup>
