@@ -289,7 +289,7 @@ const TelemetryPanel = ({ onResolve, onNavigate }: TelemetryPanelProps) => {
       </Collapsible>
 
       {/* Guided Autonomy Controls */}
-      <GuidedWorkflow autonomy={autonomy} onResolve={onResolve} />
+      <GuidedWorkflow autonomy={autonomy} onResolve={onResolve} onNavigate={onNavigate} />
     </div>
   );
 };
