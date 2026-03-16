@@ -57,11 +57,9 @@ const LeftNav = ({ activeNav, setActiveNav }: LeftNavProps) => {
                     <Icon className="h-4 w-4" />
                   </button>
                 </TooltipTrigger>
-                {!expanded && (
-                  <TooltipContent side="right" className="text-xs">
-                    {item.label}
-                  </TooltipContent>
-                )}
+                <TooltipContent side="right" className="text-xs z-[3000]">
+                  {item.label}
+                </TooltipContent>
               </Tooltip>
             );
           })}
