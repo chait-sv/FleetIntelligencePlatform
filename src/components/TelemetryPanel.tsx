@@ -107,9 +107,9 @@ const scenarioAutonomy = {
     specialButton: null,
   },
   "INT-4823": {
-    action: "Action: Approve recalibration sequence.",
+    action: "Action: Approve reroute around marathon closure.",
     actionColor: "text-accent",
-    warning: null,
+    warning: "Route blocked by marathon barricades — vehicle stopped",
     specialButton: null,
   },
 };

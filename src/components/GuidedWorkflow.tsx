@@ -26,7 +26,7 @@ const steps = [
   { label: "Resolve", icon: CheckCircle2 },
 ];
 
-const scenarioRadioOptions: Record<string, { label: string; value: string }[]> = {
+const scenarioRadioOptions: Record<string, { label: string; value: string; color?: string }[]> = {
   "INT-4821": [
     { label: "Waypoint 1", value: "waypoint-1" },
     { label: "Waypoint 2", value: "waypoint-2" },
@@ -34,6 +34,10 @@ const scenarioRadioOptions: Record<string, { label: string; value: string }[]> =
   "INT-4822": [
     { label: "Approve", value: "approve" },
     { label: "Reject", value: "reject" },
+  ],
+  "INT-4823": [
+    { label: "Approve Proposed Route A (U-Turn + Detour)", value: "route-a", color: "text-blue-400" },
+    { label: "Approve Proposed Route B (Left Turn + Alt Street)", value: "route-b", color: "text-green-400" },
   ],
 };
 
