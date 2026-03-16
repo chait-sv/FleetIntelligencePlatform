@@ -155,18 +155,20 @@ const ContextView = () => {
               </div>
             </div>
           )}
-          <div className="absolute bottom-2 left-2 flex items-center gap-4 bg-background/80 backdrop-blur-sm px-2.5 py-1 rounded-sm">
-            <div className="flex items-center gap-1">
-              <MapPin className="h-3.5 w-3.5 text-destructive" />
-              <span className="text-[10px] text-destructive font-mono font-semibold">Current Location</span>
-            </div>
-            {!map.showPathBlocked && (
+          {!map.showMarathonRoutes && (
+            <div className="absolute bottom-2 left-2 flex items-center gap-4 bg-background/80 backdrop-blur-sm px-2.5 py-1 rounded-sm">
               <div className="flex items-center gap-1">
-                <MapPin className="h-3.5 w-3.5 text-warning" />
-                <span className="text-[10px] text-warning font-mono font-semibold">New Waypoint</span>
+                <MapPin className="h-3.5 w-3.5 text-destructive" />
+                <span className="text-[10px] text-destructive font-mono font-semibold">Current Location</span>
               </div>
-            )}
-          </div>
+              {!map.showPathBlocked && (
+                <div className="flex items-center gap-1">
+                  <MapPin className="h-3.5 w-3.5 text-warning" />
+                  <span className="text-[10px] text-warning font-mono font-semibold">New Waypoint</span>
+                </div>
+              )}
+            </div>
+          )}
           <div className="absolute bottom-2 right-2 bg-background/80 backdrop-blur-sm px-2 py-0.5 rounded-sm">
             <p className="text-[10px] text-muted-foreground/60 font-mono">Layer: {map.label} | Objects: 142 | Updated 1.2s ago</p>
           </div>
