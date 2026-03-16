@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { useScenario } from "@/contexts/ScenarioContext";
 
@@ -24,15 +26,31 @@ const steps = [
   { label: "Resolve", icon: CheckCircle2 },
 ];
 
+const scenarioRadioOptions: Record<string, { label: string; value: string }[]> = {
+  "INT-4821": [
+    { label: "Waypoint 1", value: "waypoint-1" },
+    { label: "Waypoint 2", value: "waypoint-2" },
+  ],
+  "INT-4822": [
+    { label: "Approve", value: "approve" },
+    { label: "Reject", value: "reject" },
+  ],
+};
+
 const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [resolveOpen, setResolveOpen] = useState(false);
   const [faultCategory, setFaultCategory] = useState("");
   const [flagSimReview, setFlagSimReview] = useState(false);
+  const [radioSelection, setRadioSelection] = useState("");
+  const { activeTicket } = useScenario();
+
+  const radioOptions = scenarioRadioOptions[activeTicket];
 
   const handleStepAction = () => {
     if (currentStep < 3) {
       setCurrentStep((s) => s + 1);
+      if (currentStep === 1) setRadioSelection("");
     } else {
       setResolveOpen(true);
     }
@@ -43,6 +61,7 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
     setCurrentStep(0);
     setFaultCategory("");
     setFlagSimReview(false);
+    setRadioSelection("");
     toast({
       title: "Edge case tagged and submitted successfully",
       className: "bg-accent text-accent-foreground border-accent",
@@ -109,12 +128,28 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
                   {autonomy.action}
                 </div>
               )}
+              {radioOptions && (
+                <RadioGroup value={radioSelection} onValueChange={setRadioSelection} className="space-y-1.5">
+                  {radioOptions.map((opt) => (
+                    <div key={opt.value} className="flex items-center gap-2">
+                      <RadioGroupItem value={opt.value} id={opt.value} />
+                      <Label htmlFor={opt.value} className="text-[11px] text-foreground cursor-pointer">{opt.label}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              )}
               {autonomy.specialButton && (
                 <Button variant="destructive" size="sm" className="w-full text-[10px]">
                   {autonomy.specialButton}
                 </Button>
               )}
-              <Button variant="command" size="lg" className="w-full gap-2" onClick={handleStepAction}>
+              <Button
+                variant="command"
+                size="lg"
+                className="w-full gap-2"
+                onClick={handleStepAction}
+                disabled={!!radioOptions && !radioSelection}
+              >
                 <ArrowRight className="h-4 w-4" />
                 Execute
               </Button>
