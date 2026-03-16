@@ -84,7 +84,7 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
     <>
       <div className="panel-border">
         <div className="panel-header">Guided Autonomy Controls</div>
-        <div className="p-2.5 space-y-3">
+        <div className="p-3 space-y-3">
           {/* Step indicators */}
           <div className="flex items-center gap-1">
             {steps.map((step, i) => {
@@ -95,7 +95,7 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
                 <div key={step.label} className="flex items-center gap-1 flex-1">
                   <div className="flex flex-col items-center flex-1">
                     <div
-                      className={`h-6 w-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors ${
+                      className={`h-7 w-7 rounded-full flex items-center justify-center text-[11px] font-bold transition-colors ${
                         isDone
                           ? "bg-accent text-accent-foreground"
                           : isActive
@@ -103,9 +103,9 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
                           : "bg-secondary text-muted-foreground"
                       }`}
                     >
-                      {isDone ? <Check className="h-3 w-3" /> : <Icon className="h-3 w-3" />}
+                      {isDone ? <Check className="h-3.5 w-3.5" /> : <Icon className="h-3.5 w-3.5" />}
                     </div>
-                    <span className={`text-[9px] mt-0.5 font-mono ${isActive ? "text-primary" : isDone ? "text-accent" : "text-muted-foreground"}`}>
+                    <span className={`text-[11px] mt-0.5 font-mono ${isActive ? "text-primary" : isDone ? "text-accent" : "text-muted-foreground"}`}>
                       {step.label}
                     </span>
                   </div>
@@ -130,12 +130,12 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
             <div className="space-y-2">
               {autonomy.warning && (
                 <div className="flex items-start gap-1.5">
-                  <AlertTriangle className="h-3.5 w-3.5 text-warning shrink-0 mt-0.5" />
-                  <span className="text-[11px] text-warning font-semibold">{autonomy.warning}</span>
+                  <AlertTriangle className="h-4 w-4 text-warning shrink-0 mt-0.5" />
+                  <span className="text-xs text-warning font-semibold">{autonomy.warning}</span>
                 </div>
               )}
               {autonomy.action && (
-                <div className={`text-[11px] ${autonomy.actionColor} font-semibold`}>
+                <div className={`text-xs ${autonomy.actionColor} font-semibold`}>
                   {autonomy.action}
                 </div>
               )}
@@ -144,13 +144,13 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
                  {radioOptions.map((opt) => (
                     <div key={opt.value} className="flex items-center gap-2">
                       <RadioGroupItem value={opt.value} id={opt.value} />
-                      <Label htmlFor={opt.value} className={`text-[11px] cursor-pointer ${opt.color || "text-foreground"}`}>{opt.label}</Label>
+                      <Label htmlFor={opt.value} className={`text-xs cursor-pointer ${opt.color || "text-foreground"}`}>{opt.label}</Label>
                     </div>
                   ))}
                 </RadioGroup>
               )}
               {autonomy.specialButton && (
-                <Button variant="destructive" size="sm" className="w-full text-[10px]">
+                <Button variant="destructive" size="sm" className="w-full text-xs">
                   {autonomy.specialButton}
                 </Button>
               )}
@@ -165,10 +165,10 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
                 Execute
               </Button>
               <div className="flex gap-1.5">
-                <Button variant="outline" size="sm" className="flex-1 text-[10px]">
+                <Button variant="outline" size="sm" className="flex-1 text-xs">
                   Hold Position
                 </Button>
-                <Button variant="destructive" size="sm" className="flex-1 text-[10px]">
+                <Button variant="destructive" size="sm" className="flex-1 text-xs">
                   E-Stop
                 </Button>
               </div>
