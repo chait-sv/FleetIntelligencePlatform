@@ -41,7 +41,7 @@ const TaskQueue = () => {
     <div className="flex flex-col h-full panel-border">
       <div className="panel-header flex items-center justify-between">
         <span>Active Interventions</span>
-        <span className="text-foreground font-mono text-[10px]">{tickets.length}</span>
+        <span className="text-foreground font-mono text-xs">{tickets.length}</span>
       </div>
       <div className="flex-1 overflow-auto p-1.5 space-y-1.5">
         {tickets.map((t) => {
@@ -61,13 +61,13 @@ const TaskQueue = () => {
             >
               <div className="flex items-center justify-between mb-1">
                 <div className="flex items-center gap-1.5">
-                  <Icon className="h-3 w-3" />
-                  <span className="text-[11px] font-semibold">{t.id}</span>
+                  <Icon className="h-3.5 w-3.5" />
+                  <span className="text-xs font-semibold">{t.id}</span>
                 </div>
-                <span className="text-[10px] text-muted-foreground font-mono">{t.time}</span>
+                <span className="text-[11px] text-muted-foreground font-mono">{t.time}</span>
               </div>
-              <div className="text-[11px] text-card-foreground">{t.label}</div>
-              <div className="text-[10px] text-muted-foreground mt-0.5">{t.vehicle}</div>
+              <div className="text-xs text-card-foreground">{t.label}</div>
+              <div className="text-[11px] text-muted-foreground mt-0.5">{t.vehicle}</div>
             </button>
           );
         })}

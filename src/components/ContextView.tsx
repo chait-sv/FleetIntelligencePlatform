@@ -53,13 +53,13 @@ const ContextView = () => {
       <div className="flex-1 panel-border flex flex-col min-h-0">
         <div className="panel-header flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Camera className="h-3 w-3 text-primary" />
+            <Camera className="h-3.5 w-3.5 text-primary" />
             <span>Live Camera Feed</span>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setAutonomyEngaged(!autonomyEngaged)}
-              className={`flex items-center gap-1.5 px-2 py-0.5 rounded-sm font-mono text-[10px] font-semibold transition-colors cursor-pointer ${
+              className={`flex items-center gap-1.5 px-2 py-0.5 rounded-sm font-mono text-[11px] font-semibold transition-colors cursor-pointer ${
                 autonomyEngaged
                   ? "bg-primary/20 text-primary border border-primary/30"
                   : "bg-destructive/20 text-destructive border border-destructive/30"
@@ -72,8 +72,8 @@ const ContextView = () => {
               )}
               {autonomyEngaged ? "AV ENGAGED" : "AV DISENGAGED"}
             </button>
-            <span className="text-[10px] text-destructive status-pulse font-mono">● REC</span>
-            <Maximize2 className="h-3 w-3 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
+            <span className="text-[11px] text-destructive status-pulse font-mono">● REC</span>
+            <Maximize2 className="h-3.5 w-3.5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
           </div>
         </div>
         <div className="flex-1 flex min-h-0 relative overflow-hidden">
@@ -82,7 +82,7 @@ const ContextView = () => {
             <img src={cam.left} alt="Left camera view" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-background/20" />
             <div className="absolute top-1.5 left-1.5 bg-background/70 backdrop-blur-sm px-1.5 py-0.5 rounded-sm">
-              <span className="text-[9px] font-mono text-muted-foreground">CAM_LEFT</span>
+              <span className="text-[11px] font-mono text-muted-foreground">CAM_LEFT</span>
             </div>
           </div>
           {/* Center Camera - 50% */}
@@ -100,16 +100,16 @@ const ContextView = () => {
               </svg>
             )}
             <div className="absolute top-1.5 left-1.5 bg-background/70 backdrop-blur-sm px-1.5 py-0.5 rounded-sm">
-              <span className="text-[9px] font-mono text-muted-foreground">CAM_FRONT</span>
+              <span className="text-[11px] font-mono text-muted-foreground">CAM_FRONT</span>
             </div>
             {cam.routeActive && (
               <div className="absolute top-1.5 right-1.5 bg-green-500/20 backdrop-blur-sm px-1.5 py-0.5 rounded-sm border border-green-500/30">
-                <span className="text-[9px] font-mono text-green-400">ROUTE ACTIVE</span>
+                <span className="text-[11px] font-mono text-green-400">ROUTE ACTIVE</span>
               </div>
             )}
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-sm px-2.5 py-1 rounded-sm text-center">
-              <p className="text-[10px] text-warning font-semibold">{cam.overlay}</p>
-              <p className="text-[9px] text-muted-foreground/60 font-mono mt-0.5">1920×1080 @ 30fps | 48ms latency</p>
+              <p className="text-xs text-warning font-semibold">{cam.overlay}</p>
+              <p className="text-[11px] text-muted-foreground/60 font-mono mt-0.5">1920×1080 @ 30fps | 48ms latency</p>
             </div>
           </div>
           {/* Right Camera - 25% */}
@@ -117,7 +117,7 @@ const ContextView = () => {
             <img src={cam.right} alt="Right camera view" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-background/20" />
             <div className="absolute top-1.5 left-1.5 bg-background/70 backdrop-blur-sm px-1.5 py-0.5 rounded-sm">
-              <span className="text-[9px] font-mono text-muted-foreground">CAM_RIGHT</span>
+              <span className="text-[11px] font-mono text-muted-foreground">CAM_RIGHT</span>
             </div>
           </div>
         </div>
@@ -127,10 +127,10 @@ const ContextView = () => {
       <div className="flex-1 panel-border flex flex-col min-h-0">
         <div className="panel-header flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Map className="h-3 w-3 text-accent" />
+            <Map className="h-3.5 w-3.5 text-accent" />
             <span>HD Semantic Map</span>
           </div>
-          <span className="text-[10px] font-mono text-muted-foreground">{map.coords}</span>
+          <span className="text-[11px] font-mono text-muted-foreground">{map.coords}</span>
         </div>
         <div className="flex-1 relative overflow-hidden min-h-0">
           <img src={map.img} alt="HD Semantic Map" className="absolute inset-0 w-full h-full object-cover" />
@@ -140,18 +140,18 @@ const ContextView = () => {
               <div className="bg-destructive/80 backdrop-blur-sm p-2 rounded-sm border border-destructive">
                 <AlertOctagon className="h-6 w-6 text-destructive-foreground" />
               </div>
-              <span className="text-[11px] font-mono font-bold text-destructive bg-background/80 backdrop-blur-sm px-2 py-0.5 rounded-sm">PATH BLOCKED</span>
+              <span className="text-xs font-mono font-bold text-destructive bg-background/80 backdrop-blur-sm px-2 py-0.5 rounded-sm">PATH BLOCKED</span>
             </div>
           )}
           {map.showMarathonRoutes && (
             <div className="absolute top-3 left-3 flex flex-col gap-1.5">
               <div className="flex items-center gap-1.5 bg-background/80 backdrop-blur-sm px-2 py-1 rounded-sm">
                 <div className="w-5 h-0.5 border-t-2 border-dashed border-blue-400" />
-                <span className="text-[10px] font-mono font-semibold text-blue-400">Route A: U-Turn + Detour</span>
+                <span className="text-xs font-mono font-semibold text-blue-400">Route A: U-Turn + Detour</span>
               </div>
               <div className="flex items-center gap-1.5 bg-background/80 backdrop-blur-sm px-2 py-1 rounded-sm">
                 <div className="w-5 h-0.5 border-t-2 border-dashed border-green-400" />
-                <span className="text-[10px] font-mono font-semibold text-green-400">Route B: Left Turn + Alt Street</span>
+                <span className="text-xs font-mono font-semibold text-green-400">Route B: Left Turn + Alt Street</span>
               </div>
             </div>
           )}
@@ -159,18 +159,18 @@ const ContextView = () => {
             <div className="absolute bottom-2 left-2 flex items-center gap-4 bg-background/80 backdrop-blur-sm px-2.5 py-1 rounded-sm">
               <div className="flex items-center gap-1">
                 <MapPin className="h-3.5 w-3.5 text-destructive" />
-                <span className="text-[10px] text-destructive font-mono font-semibold">Current Location</span>
+                <span className="text-xs text-destructive font-mono font-semibold">Current Location</span>
               </div>
               {!map.showPathBlocked && (
                 <div className="flex items-center gap-1">
                   <MapPin className="h-3.5 w-3.5 text-warning" />
-                  <span className="text-[10px] text-warning font-mono font-semibold">New Waypoint</span>
+                  <span className="text-xs text-warning font-mono font-semibold">New Waypoint</span>
                 </div>
               )}
             </div>
           )}
           <div className="absolute bottom-2 right-2 bg-background/80 backdrop-blur-sm px-2 py-0.5 rounded-sm">
-            <p className="text-[10px] text-muted-foreground/60 font-mono">Layer: {map.label} | Objects: 142 | Updated 1.2s ago</p>
+            <p className="text-[11px] text-muted-foreground/60 font-mono">Layer: {map.label} | Objects: 142 | Updated 1.2s ago</p>
           </div>
         </div>
       </div>
