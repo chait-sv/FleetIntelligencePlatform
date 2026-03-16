@@ -131,7 +131,7 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
 
           {/* Step 2: Disconnect */}
           {currentStep === 2 && (
-            <Button variant="command" size="lg" className="w-full gap-2" onClick={handleStepAction}>
+            <Button variant="warning" size="lg" className="w-full gap-2" onClick={handleStepAction}>
               <Unplug className="h-4 w-4" />
               Disconnect from Vehicle
             </Button>
