@@ -17,6 +17,7 @@ interface GuidedWorkflowProps {
     specialButton: string | null;
   };
   onResolve: () => void;
+  onNavigate: (nav: string) => void;
 }
 
 const steps = [
