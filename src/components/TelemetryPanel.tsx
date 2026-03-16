@@ -116,9 +116,10 @@ const scenarioAutonomy = {
 
 interface TelemetryPanelProps {
   onResolve: () => void;
+  onNavigate: (nav: string) => void;
 }
 
-const TelemetryPanel = ({ onResolve }: TelemetryPanelProps) => {
+const TelemetryPanel = ({ onResolve, onNavigate }: TelemetryPanelProps) => {
   const [chatInput, setChatInput] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const { activeTicket } = useScenario();
@@ -288,7 +289,7 @@ const TelemetryPanel = ({ onResolve }: TelemetryPanelProps) => {
       </Collapsible>
 
       {/* Guided Autonomy Controls */}
-      <GuidedWorkflow autonomy={autonomy} onResolve={onResolve} />
+      <GuidedWorkflow autonomy={autonomy} onResolve={onResolve} onNavigate={onNavigate} />
     </div>
   );
 };

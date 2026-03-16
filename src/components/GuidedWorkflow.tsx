@@ -17,6 +17,7 @@ interface GuidedWorkflowProps {
     specialButton: string | null;
   };
   onResolve: () => void;
+  onNavigate: (nav: string) => void;
 }
 
 const steps = [
@@ -41,7 +42,7 @@ const scenarioRadioOptions: Record<string, { label: string; value: string; color
   ],
 };
 
-const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
+const GuidedWorkflow = ({ autonomy, onResolve, onNavigate }: GuidedWorkflowProps) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [resolveOpen, setResolveOpen] = useState(false);
   const [faultCategory, setFaultCategory] = useState("");
@@ -73,10 +74,15 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
       className: "bg-accent text-accent-foreground border-accent",
     });
     const currentIndex = ticketOrder.indexOf(activeTicket);
-    const nextTicket = ticketOrder[(currentIndex + 1) % ticketOrder.length];
+    const isLastTicket = currentIndex === ticketOrder.length - 1;
     setTimeout(() => {
-      setActiveTicket(nextTicket);
-      onResolve();
+      if (isLastTicket) {
+        onNavigate("Open Tasks");
+      } else {
+        const nextTicket = ticketOrder[currentIndex + 1];
+        setActiveTicket(nextTicket);
+        onResolve();
+      }
     }, 2000);
   };
 
