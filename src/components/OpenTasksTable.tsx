@@ -30,6 +30,7 @@ const statusColors: Record<string, string> = {
   "In progress": "bg-primary/20 text-primary border-primary/30",
   "Not Started": "bg-muted text-muted-foreground border-border",
   Rescue: "bg-destructive/20 text-destructive border-destructive/30",
+  Closed: "bg-muted text-muted-foreground border-border opacity-60",
 };
 
 const priorityColors: Record<string, string> = {
