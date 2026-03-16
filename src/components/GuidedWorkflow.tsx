@@ -68,7 +68,12 @@ const GuidedWorkflow = ({ autonomy, onResolve }: GuidedWorkflowProps) => {
       title: "Edge case tagged and submitted successfully",
       className: "bg-accent text-accent-foreground border-accent",
     });
-    setTimeout(() => onResolve(), 400);
+    const currentIndex = ticketOrder.indexOf(activeTicket);
+    const nextTicket = ticketOrder[(currentIndex + 1) % ticketOrder.length];
+    setTimeout(() => {
+      setActiveTicket(nextTicket);
+      onResolve();
+    }, 2000);
   };
 
   return (
