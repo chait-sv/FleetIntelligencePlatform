@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { AlertCircle, CheckCircle2, LogIn, ShieldCheck } from "lucide-react";
+import { AlertCircle, CheckCircle2, Heart, LogIn, ShieldCheck } from "lucide-react";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -84,6 +84,18 @@ const Login = () => {
             Sign In
           </Button>
         </form>
+
+        <p className="text-xs text-muted-foreground text-center pt-2">
+          Built with <Heart className="inline h-3 w-3 text-red-500 fill-red-500 relative -top-[1px]" /> in Palo Alto, CA by{" "}
+          <a
+            href="https://www.linkedin.com/in/chaitsv/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Chait Sriramdass
+          </a>
+        </p>
       </div>
     </div>
   );
